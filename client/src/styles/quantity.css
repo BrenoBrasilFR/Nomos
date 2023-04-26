@@ -1,0 +1,55 @@
+.quantity-div {
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+.quantity-box {
+    background: white;
+    padding: 17px 57px 17px 50px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.div-x {
+    display: flex;
+    justify-content: right;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.x {
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    font-size: 0.7rem !important;
+    padding: 5px 8px;
+    margin: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-box button:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.div-add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-add > h4 {
+    cursor: pointer;
+}
+
+.inc-dec div {
+    margin: 0 25px 0 13px;
+}

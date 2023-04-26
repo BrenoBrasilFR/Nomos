@@ -1,0 +1,226 @@
+#PSmain {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    padding: 40px;
+    margin: 0 auto;
+}
+
+#PSbutton {
+    width: fit-content;
+    margin: 0;
+    margin-left: 60px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: "Source Sans 3";
+    list-style: none;
+    font-size: 1.6rem;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+
+#PSfirstDiv {
+    display: flex;
+    justify-content: center;
+}
+
+#PSfirstDiv div {
+    margin: 30px 35px;
+}
+
+#PSfirstDiv>img {
+    width: 300px;
+    height: 410px;
+    object-fit: cover;
+    margin: 30px;
+}
+
+#PSsecondDiv {
+    width: 400px;
+}
+
+#PSsecondDiv h2 {
+    font-size: 2.2rem;
+    text-transform: uppercase;
+}
+
+#PSsecondDiv h3 {
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+
+#PSsecondDiv h3:last-child {
+    font-size: 1.5rem;
+}
+
+#PSthirdDiv {
+    margin-top: 50px !important;
+    width: 250px;
+}
+
+#PSthirdDiv div {
+    padding: 2px 0;
+    margin: 0;
+}
+
+#PSthirdDiv h3 {
+    margin: 0;
+}
+
+#PSthirdDiv button {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: white;
+    margin: 10px 0;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+}
+
+#PSthirdDiv button:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+#PSdisabledButton {
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    cursor: default !important;
+}
+
+#PSdisabledButton:hover {
+    background: rgba(0, 0, 0, 0.02) !important;
+}
+
+#quantity {
+    display: flex;
+    align-items: center;
+    padding: 0 !important;
+}
+
+#quantity-box {
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    padding: 7px;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.added {
+    padding: 10px 0;
+    margin: 0;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#PSreviews {
+    margin-left: 100px;
+}
+
+#PSreviews h1 {
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+
+#PSreviews>div:nth-child(4) {
+    margin: 20px 0;
+}
+
+.review {
+    margin: 30px 0;
+}
+
+.review h4 {
+    margin: 10px 0;
+}
+
+.review_info {
+    display: flex;
+    align-items: center;
+}
+
+.review_info h4 {
+    margin: 0 20px;
+}
+
+#addReview {
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+#addReview h3 {
+    margin: 0;
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+#leaveReview {
+    display: none;
+    width: fit-content;
+    height: fit-content;
+    background: rgba(253, 253, 253, 1);
+    padding: 15px 20px 20px 20px;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    margin: 15px 0;
+}
+
+#leaveReview form {
+    margin: 0;
+}
+
+#leaveReview form div {
+    display: flex;
+    flex-direction: column;
+}
+
+#leaveReview form div:first-child {
+    margin-bottom: 10px;
+}
+
+#leaveReview form div label {
+    width: fit-content;
+}
+
+#leaveReview form div select,
+#leaveReview form div input {
+    margin: 5px 0;
+}
+
+#leaveReview form div select {
+    font-size: 1.4rem;
+    padding: 3px 5px;
+}
+
+#leaveReview form div select option {
+    font-weight: 300;
+}
+
+#leaveReview form div textarea {
+    font-family: "Source Sans 3";
+    font-size: 1.4rem;
+    font-weight: 300;
+    min-width: 500px;
+    height: 100px;
+    padding: 0 5px;
+}
+
+#leaveReview form button {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: white;
+    border-radius: 5px;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    margin-top: 25px;
+}
+
+#leaveReview form h3 {
+    margin-top: 20px;
+    margin-bottom: 0;
+}

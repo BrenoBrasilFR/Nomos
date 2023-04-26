@@ -1,0 +1,314 @@
+#profilePage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#profile h3,
+#profile legend {
+    font-size: 1.6rem;
+}
+
+#profile {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px;
+    margin-bottom: auto;
+}
+
+#innerProfile {
+    min-width: 55%;
+}
+
+#innerProfile h3 {
+    margin: 0;
+}
+
+.form-profile {
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+}
+
+.form-profile>form {
+    position: static;
+    margin: 0;
+}
+
+.form-profile label {
+    font-size: 1.4rem;
+    width: 12rem;
+}
+
+.form-profile input {
+    width: 250px;
+    height: 30px;
+    cursor: auto;
+}
+
+.form-profile>form>fieldset {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+}
+
+.form-profile>form:nth-child(2) {
+    margin-top: 20px;
+}
+
+.form-profile>form>fieldset>legend {
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.form-profile>form>fieldset>button {
+    margin: 30px 10rem;
+}
+
+.form-profile>form>fieldset>h3 {
+    font-size: 1.6rem !important;
+    margin: 20px auto 0;
+}
+
+#orders {
+    min-height: 250px;
+    margin-top: 30px;
+}
+
+#orders h3 {
+    font-size: 1.8rem;
+}
+
+.order {
+    display: flex;
+    width: 100%;
+    margin: 15px 0;
+}
+
+.order h3 {
+    font-size: 1.4rem !important;
+}
+
+.order div {
+    width: 150px;
+}
+
+.order div:first-child {
+    width: 380px;
+}
+
+.order div:nth-child(3) {
+    width: 120px;
+}
+
+.order div:nth-child(4) {
+    width: 180px;
+}
+
+.order button {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: white;
+    margin: auto 15px;
+    border-radius: 5px;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+}
+
+#addresses {
+    min-height: 250px;
+}
+
+#addresses h3 {
+    font-size: 1.8rem;
+}
+
+#addAddress {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+#addAddress h4 {
+    margin: 0;
+    margin-left: 8px;
+    z-index: -2;
+    font-size: 1.4rem;
+}
+
+#plus {
+    border: 1px solid black;
+    height: 15px;
+    width: 15px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: content-box;
+}
+
+#plus #div1 {
+    position: absolute;
+    border-right: 1px solid black;
+    height: 11px;
+    width: 0;
+}
+
+#plus #div2 {
+    position: absolute;
+    border-top: 1px solid black;
+    height: 0;
+    width: 11px;
+}
+
+#dropdownAddress {
+    display: none;
+    width: fit-content;
+    height: fit-content;
+    background: rgba(253, 253, 253, 1);
+    padding: 4px 4px;
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 3;
+}
+
+#dropdownAddress>form>div {
+    display: flex;
+    flex-direction: column;
+    margin: 3px 10px;
+}
+
+#dropdownAddress>form>div>input,
+#dropdownAddress>form>div>select {
+    height: 30px;
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin: 0;
+}
+
+#dropdownAddress>form>div>label {
+    font-size: 1.4rem;
+    width: fit-content;
+}
+
+#dropdownAddress button {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: white;
+    margin: 15px 10px;
+    border-radius: 5px;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+}
+
+#closeDropdown {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#closeDropdown #div1 {
+    width: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+    position: absolute;
+    transform: rotate(45deg)
+}
+
+#closeDropdown #div2 {
+    width: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+    position: absolute;
+    transform: rotate(-45deg)
+}
+
+#address {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    padding: 10px 15px;
+    width: 100%;
+    position: relative;
+    border-radius: 5px;
+}
+
+#inner-address {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 630px;
+}
+
+#address h3 {
+    font-size: 1.4rem;
+}
+
+#address button {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: white;
+    border-radius: 5px;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    position: absolute;
+    right: 25px;
+}
+
+.address-div {
+    margin: 0 45px 0 0;
+    max-width: 250px;
+}
+
+.address-div {
+    margin: 0 20px 0 0;
+}
+
+#delete_account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#delete_account button {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: white;
+    border-radius: 5px;
+    height: fit-content;
+    padding: 9px 16px;
+    margin-left: 20px;
+    font-size: 0.95rem;
+}
+
+.alert-box-delete {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.alert-box-delete button {
+    margin: 0 10px;
+    padding: 5px 13px;
+    height: fit-content;
+    cursor: pointer;
+}

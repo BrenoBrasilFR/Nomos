@@ -1,0 +1,178 @@
+.RSwrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.release-item {
+    display: none;
+}
+
+.release-selected {
+    display: block;
+    animation: fadeIn 2s;
+    z-index: 3;
+}
+
+.release-button {
+    height: 100%;
+    width: 50px;
+    border: none;
+    position: absolute;
+    font-size: 3rem;
+    background: rgba(255, 255, 255, 0.4);
+    z-index: 5;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.release-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.release-button-2 {
+    background: transparent;
+    transition: 0.5s;
+}
+
+.release-button-2:hover {
+    background: transparent;
+}
+
+.release-button.prev {
+    left: 0;
+    transform: rotate(180deg);
+}
+
+.release-button.next {
+    right: 0;
+}
+
+.release-button img {
+    width: 30px;
+}
+
+.release-img-div {
+    height: 1px;
+    margin-left: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-1 {
+    object-position: 100% 15%;
+}
+
+.img-2 {
+    object-position: 100% 25%;
+}
+
+.loaderProducts {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid rgba(50, 50, 50, 1);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1.5s linear infinite;
+    display: block;
+    margin: 0 50px;
+    margin-bottom: 40px;
+}
+
+.loaderRelease {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid rgba(50, 50, 50, 1);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1.5s linear infinite;
+    display: none;
+    position: absolute;
+}
+
+.loaderWraper {
+    width: 1px;
+    height: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.releaseShop {
+    /* margin-top: 100px !important; */
+    height: 45vh !important;
+    width: 40vw !important;
+}
+
+.text-shop {
+    left: 30px !important;
+    top: 40px !important;
+}
+
+.text-shop h3 {
+    font-size: 2rem !important;
+}
+
+.release-button.shop {
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.release-button.prev.shop {
+    left: -130px;
+}
+
+.release-button.next.shop {
+    right: -130px;
+}
+
+#new-release {
+    width: 95vw;
+    height: 110vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    position: relative;
+}
+
+.release-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#new-release a {
+    height: 100%;
+    width: 100%;
+}
+
+.new-release-text {
+    position: absolute;
+    top: 45px;
+    left: 105px;
+    z-index: 1;
+    display: flex;
+}
+
+.new-release-text h3 {
+    font-size: 3.2rem;
+    cursor: pointer;
+    margin: 0;
+    margin-right: 40px;
+}

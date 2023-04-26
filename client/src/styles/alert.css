@@ -1,0 +1,41 @@
+.alert-div {
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.alert-box {
+    width: 650px;
+    background: white;
+    padding: 25px 25px 33px;
+    text-align: center;
+}
+
+.alert-box h2 {
+    font-size: 1.5rem;
+    margin: 15px;
+}
+
+.alert-box h1 {
+    font-size: 1.9rem;
+    margin-top: 0;
+}
+
+.alert-box button {
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    margin: 10px 0 0;
+    transition: 0.2s;
+    font-family: "Source Sans 3";
+    font-size: 1rem;
+    padding: 8px 12px;
+}
+
+.alert-box button:hover {
+    background: rgba(0, 0, 0, 0.05);
+}

@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap");
+
+body {
+    margin: 0;
+}
+
+.fullpage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+form,
+input,
+select {
+    font-family: "Source Sans 3";
+    cursor: default;
+    margin: 0;
+    list-style: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+input {
+    cursor: auto;
+}
+
+button {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+a {
+    font-family: "Source Sans 3";
+    font-weight: 300;
+    text-decoration: none;
+    color: black;
+}
+
+ul {
+    display: flex;
+}
+
+li {
+    list-style: none;
+    margin: 0 20px;
+}
+
+li a {
+    font-weight: 300;
+    font-size: 1.4rem;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: 1.5s;
+    transition-property: opacity;
+}
+
+.fade-in.appear {
+    opacity: 1;
+}
+
+#textNotFound {
+    display: flex;
+    justify-content: center;
+    font-size: 3.2rem;
+    padding-top: 10vh;
+    height: 80vh;
+}
+
+.rating span i {
+    color: #E8DB3B;
+}

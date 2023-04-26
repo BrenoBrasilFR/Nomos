@@ -1,0 +1,78 @@
+#collection-div {
+    padding: 15px;
+    width: fit-content;
+    margin: auto;
+}
+
+#collection-div h3 {
+    font-size: 2.3rem;
+    cursor: pointer;
+    margin: 20px 7px 14px;
+    transition: 0.3s;
+    transition-property: margin;
+}
+
+#collection-div h3:hover {
+    margin: 20px 13px 14px;
+    transition: 0.3s;
+}
+
+
+.collection-products {
+    width: 90%;
+}
+
+.collection img {
+    display: block;
+    height: 320px;
+    transition: 0.3s;
+    transform: scale(1.5);
+}
+
+.collection img:hover {
+    transform: scale(1.57);
+}
+
+/* tangomat */
+#collection-4 img {
+    transform: scale(1.4);
+}
+
+#collection-4 img:hover {
+    transform: scale(1.47);
+}
+
+/* lambda */
+#collection-5 img {
+    transform: scale(1.3);
+}
+
+#collection-5 img:hover {
+    transform: scale(1.37);
+}
+
+#products {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product {
+    margin: 10px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.product a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container {
+    overflow: hidden;
+}
