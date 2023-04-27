@@ -35,7 +35,7 @@ app.use('/api/products', ProductRoutes)
 
 app.use('/api/user_session', UserRoutes)
 
-const __dirname = path.resolve()
+/* const __dirname = path.resolve()
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '/client/build')))
@@ -49,7 +49,7 @@ if (process.env.NODE_ENV === 'production') {
     app.get('/', (req, res) => {
         res.send('API is running...')
     })
-}
+} */
 
 const PORT = process.env.PORT || 5000;
 
