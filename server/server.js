@@ -7,6 +7,7 @@ import ProductRoutes from './productRoutes.js';
 import UserRoutes from './userRoutes.js';
 import { executeQuery } from './database.js';
 import * as path from 'path'
+console.log('ran')
 
 const app = express();
 
