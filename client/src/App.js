@@ -106,6 +106,11 @@ function App() {
   }, [dispatch])
 
   useEffect(() => {
+    fetch('/api')
+      .then((res) => console.log(res))
+  }, [])
+
+  useEffect(() => {
     if (localStorage.getItem('street')) {
       dispatch(setShippingAddress({
         street: localStorage.getItem('street'),
