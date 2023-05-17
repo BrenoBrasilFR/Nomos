@@ -10,7 +10,7 @@ const generateToken = (id, type) => {
 
 export const executeQuery = (req, res, queryType) => {
     const connection = mysql.createPool({
-        connectionLimit: 10,
+        connectionLimit: 100,
         host: process.env.HOST,
         user: process.env.USER,
         password: process.env.PASSWORD,
