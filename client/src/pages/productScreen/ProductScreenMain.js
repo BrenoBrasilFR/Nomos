@@ -117,12 +117,12 @@ function ProductScreenMain() {
                             : <div id='quantity'><h3>Quantity: </h3>
                                 <div className='inc-dec'>
                                     <div style={{ margin: '0 10px' }}>
-                                        <img src="http://localhost:3000/images/Arrows/arrow1/arrow1.png" alt="arrow-up" onClick={() => {
+                                        <img src="../images/Arrows/arrow1/arrow1.png" alt="arrow-up" onClick={() => {
                                             if (product.count_in_stock === quantity) return
                                             setQuantity(quantity + 1)
                                         }} />
                                         <h4>{quantity}</h4>
-                                        <img src="http://localhost:3000/images/Arrows/arrow1/arrow1.png" alt="arrow-down" onClick={() => {
+                                        <img src="../images/Arrows/arrow1/arrow1.png" alt="arrow-down" onClick={() => {
                                             if (quantity === 1) return
                                             setQuantity(quantity - 1)
                                         }} />
