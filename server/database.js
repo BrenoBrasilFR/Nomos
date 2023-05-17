@@ -22,23 +22,23 @@ export const executeQuery = (req, res, queryType) => {
 
         connection.query('UPDATE users SET token = ? WHERE id = ?',
             [refreshToken, id], (error, results, fields) => {
-                if (error) res.status(500).send
+                if (error) res.status(500).send('Error setting token on database')
             }
         )
         connection.query('CREATE EVENT delete_token ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 DAY DO BEGIN UPDATE users SET token = NULL WHERE id = ?; END;',
             [id], (error, results, fields) => {
-                if (error) res.status(500).send
+                if (error) res.status(500).send('Error creating delete token event')
             }
         )
         connection.query('SELECT * FROM addresses WHERE user_id = ?',
             [id], (error, resultsAddresses, fields) => {
                 if (error) {
-                    res.status(500).send
+                    res.status(500).send('Error selecting addresses')
                 } else {
                     connection.query('SELECT * FROM orders WHERE user_id = ?',
                         [id], (error, resultsOrders, fields) => {
                             if (error) {
-                                res.status(500).send
+                                res.status(500).send('Error selecting orders')
                             } else {
                                 res.cookie('token', refreshToken, { httpOnly: true, secure: process.env.NODE_ENV !== "development" });
                                 res.status(200).json({
