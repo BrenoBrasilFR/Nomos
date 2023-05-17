@@ -5,7 +5,7 @@ import { query } from 'express';
 import crypto from 'crypto';
 
 const generateToken = (id, type) => {
-    return jwt.sign({ id }, process.env.SECRET, { expiresIn: type === 'access' ? '10m' : '1d' })
+    return jwt.sign({ id }, process.env.SECRET, { expiresIn: type === 'access' ? '2m' : '5m' })
 }
 
 export const executeQuery = (req, res, queryType) => {
@@ -25,11 +25,11 @@ export const executeQuery = (req, res, queryType) => {
                 if (error) res.status(500).send('Error setting token on database')
             }
         )
-        /* connection.query('CREATE EVENT delete_token ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 DAY DO BEGIN UPDATE users SET token = NULL WHERE id = ?; END;',
-            [id], (error, results, fields) => {
+        connection.query('CREATE EVENT ? ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 DAY DO BEGIN UPDATE users SET token = NULL WHERE id = ?; END;',
+            [refreshToken, id], (error, results, fields) => {
                 if (error) res.status(500).send('Error creating delete token event')
             }
-        ) */
+        )
         connection.query('SELECT * FROM addresses WHERE user_id = ?',
             [id], (error, resultsAddresses, fields) => {
                 if (error) {
@@ -160,8 +160,30 @@ export const executeQuery = (req, res, queryType) => {
             jwt.verify(req.cookies.token, process.env.SECRET, (err, decoded) => {
                 if (err) {
                     if (err.name === 'TokenExpiredError') {
-                        res.clearCookie('token')
-                        res.json({})
+                        connection.query('SELECT id, first_name, last_name, email, is_admin, token FROM users WHERE id = ?',
+                            [req.cookies.token],
+                            (error, results, fields) => {
+                                if (error) {
+                                    res.send(error)
+                                } else {
+                                    if (results[0].token === req.cookies.token) {
+                                        connection.query('DROP EVENT ?',
+                                            [results[0].token], (error, results, fields) => {
+                                                if (error) res.status(500).send('Error deleting token event on database')
+                                            }
+                                        )
+                                        res.clearCookie('token')
+                                        serverUserInfo(
+                                            results[0].id,
+                                            results[0].first_name,
+                                            results[0].last_name,
+                                            results[0].email,
+                                            results[0].is_admin
+                                        )
+                                    }
+                                }
+                            }
+                        )
                     } else {
                         req.sendStatus(500)
                     }
