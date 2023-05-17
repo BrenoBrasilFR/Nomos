@@ -25,11 +25,11 @@ export const executeQuery = (req, res, queryType) => {
                 if (error) res.status(500).send('Error setting token on database')
             }
         )
-        connection.query('CREATE EVENT ? ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 DAY DO BEGIN UPDATE users SET token = NULL WHERE id = ?; END;',
+        /* connection.query('CREATE EVENT ? ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 DAY DO BEGIN UPDATE users SET token = NULL WHERE id = ?; END;',
             [refreshToken, id], (error, results, fields) => {
                 if (error) res.status(500).send('Error creating delete token event')
             }
-        )
+        ) */
         connection.query('SELECT * FROM addresses WHERE user_id = ?',
             [id], (error, resultsAddresses, fields) => {
                 if (error) {
@@ -166,21 +166,34 @@ export const executeQuery = (req, res, queryType) => {
                                 if (error) {
                                     res.send(error)
                                 } else {
-                                    if (results[0].token === req.cookies.token) {
-                                        connection.query('DROP EVENT ?',
-                                            [results[0].token], (error, results, fields) => {
-                                                if (error) res.status(500).send('Error deleting token event on database')
+                                    jwt.verify(results[0].token, process.env.SECRET, (err, decoded) => {
+                                        if (err) {
+                                            connection.query('UPDATE users SET token = NULL WHERE id = ?', [decoded.id], (err, results, fields) => {
+                                                if (err) {
+                                                    res.status(500).send()
+                                                } else {
+                                                    res.clearCookie('token')
+                                                    res.status(200).send()
+                                                }
+                                            })
+                                        } else if (decoded) {
+                                            if (results[0].token === req.cookies.token) {
+                                                connection.query('DROP EVENT ?',
+                                                    [results[0].token], (error, results, fields) => {
+                                                        if (error) res.status(500).send('Error deleting token event on database')
+                                                    }
+                                                )
+                                                res.clearCookie('token')
+                                                serverUserInfo(
+                                                    results[0].id,
+                                                    results[0].first_name,
+                                                    results[0].last_name,
+                                                    results[0].email,
+                                                    results[0].is_admin
+                                                )
                                             }
-                                        )
-                                        res.clearCookie('token')
-                                        serverUserInfo(
-                                            results[0].id,
-                                            results[0].first_name,
-                                            results[0].last_name,
-                                            results[0].email,
-                                            results[0].is_admin
-                                        )
-                                    }
+                                        }
+                                    })
                                 }
                             }
                         )
