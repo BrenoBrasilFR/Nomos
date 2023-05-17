@@ -25,11 +25,11 @@ export const executeQuery = (req, res, queryType) => {
                 if (error) res.status(500).send('Error setting token on database')
             }
         )
-        connection.query('CREATE EVENT delete_token ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 DAY DO BEGIN UPDATE users SET token = NULL WHERE id = ?; END;',
+        /* connection.query('CREATE EVENT delete_token ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 DAY DO BEGIN UPDATE users SET token = NULL WHERE id = ?; END;',
             [id], (error, results, fields) => {
                 if (error) res.status(500).send('Error creating delete token event')
             }
-        )
+        ) */
         connection.query('SELECT * FROM addresses WHERE user_id = ?',
             [id], (error, resultsAddresses, fields) => {
                 if (error) {
