@@ -10,7 +10,7 @@ const generateToken = (id, type) => {
 
 export const executeQuery = (req, res, queryType) => {
     const connection = mysql.createPool({
-        connectionLimit: 100,
+        connectionLimit: 10,
         host: process.env.HOST,
         user: process.env.USER,
         password: process.env.PASSWORD,
@@ -66,6 +66,7 @@ export const executeQuery = (req, res, queryType) => {
             } else {
                 res.json(results);
             }
+            connection.release();
         })
     } else if (queryType === 'Select Product by Id') {
         connection.query('SELECT * FROM products WHERE id = ?', req.params.id, (error, results, fields) => {
@@ -82,6 +83,7 @@ export const executeQuery = (req, res, queryType) => {
             } else {
                 res.json(results);
             }
+            connection.release();
         })
     } else if (queryType === 'Select Reviews') {
         connection.query('SELECT * FROM reviews', (error, results, fields) => {
@@ -90,6 +92,7 @@ export const executeQuery = (req, res, queryType) => {
             } else {
                 res.json(results);
             }
+            connection.release();
         })
     } else if (queryType === 'Login') {
         connection.query('SELECT id, first_name, last_name, email, password, is_admin, token FROM users WHERE email = ?',
