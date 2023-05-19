@@ -25,6 +25,7 @@ export const executeQuery = (req, res, queryType) => {
                 if (error) res.status(500).send('Error setting token on database')
             }
         )
+        connection.end();
         /* connection.query('CREATE EVENT ? ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 DAY DO BEGIN UPDATE users SET token = NULL WHERE id = ?; END;',
             [refreshToken, id], (error, results, fields) => {
                 if (error) res.status(500).send('Error creating delete token event')
@@ -56,6 +57,7 @@ export const executeQuery = (req, res, queryType) => {
                 }
             }
         )
+        connection.end();
     }
 
     if (queryType === 'Select All Products') {
@@ -75,6 +77,7 @@ export const executeQuery = (req, res, queryType) => {
                 res.json(results);
             }
         })
+        connection.end();
     } else if (queryType === 'Select Categories Binder') {
         connection.query('SELECT * FROM categories_binder', (error, results, fields) => {
             if (error) {
@@ -120,7 +123,9 @@ export const executeQuery = (req, res, queryType) => {
                     }
 
                 }
-            })
+            }
+        )
+        connection.end();
     } else if (queryType === 'Register') {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
             if (err) {
@@ -155,6 +160,7 @@ export const executeQuery = (req, res, queryType) => {
                         }
                     }
                 )
+                connection.end();
             }
         })
 
@@ -179,6 +185,7 @@ export const executeQuery = (req, res, queryType) => {
                                                     res.status(200).send()
                                                 }
                                             })
+                                            connection.end();
                                         } else if (decoded) {
                                             if (results[0].token === req.cookies.token) {
                                                 connection.query('DROP EVENT ?',
@@ -186,6 +193,7 @@ export const executeQuery = (req, res, queryType) => {
                                                         if (error) res.status(500).send('Error deleting token event on database')
                                                     }
                                                 )
+                                                connection.end();
                                                 res.clearCookie('token')
                                                 serverUserInfo(
                                                     results[0].id,
@@ -200,6 +208,7 @@ export const executeQuery = (req, res, queryType) => {
                                 }
                             }
                         )
+                        connection.end();
                     } else {
                         req.sendStatus(500)
                     }
@@ -222,6 +231,7 @@ export const executeQuery = (req, res, queryType) => {
                             }
                         }
                     )
+                    connection.end();
                 }
             })
         } else { res.json({}) }
@@ -237,6 +247,7 @@ export const executeQuery = (req, res, queryType) => {
                         res.status(200).send()
                     }
                 })
+                connection.end();
             })
         } else { res.json({}) }
     } else if (queryType === 'Update User') {
@@ -255,6 +266,7 @@ export const executeQuery = (req, res, queryType) => {
                             if (err) res.sendStatus(500)
                             if (results) res.sendStatus(200)
                         })
+                    connection.end();
                 } else if (req.body.password) {
                     bcrypt.hash(req.body.password, 10, (err, hash) => {
                         if (err) {
@@ -266,6 +278,7 @@ export const executeQuery = (req, res, queryType) => {
                                     if (results) res.sendStatus(200)
                                 }
                             )
+                            connection.end();
                         }
                     })
 
@@ -303,6 +316,7 @@ export const executeQuery = (req, res, queryType) => {
                             }
                         }
                     )
+                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
@@ -322,6 +336,7 @@ export const executeQuery = (req, res, queryType) => {
                             if (err) res.sendStatus(500)
                             if (results) res.sendStatus(200)
                         })
+                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
@@ -350,6 +365,7 @@ export const executeQuery = (req, res, queryType) => {
                                 })
                             }
                         })
+                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
@@ -381,6 +397,7 @@ export const executeQuery = (req, res, queryType) => {
                                 )
                             }
                         })
+                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
@@ -404,6 +421,7 @@ export const executeQuery = (req, res, queryType) => {
                                 req.sendStatus(201)
                             }
                         })
+                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
@@ -446,6 +464,7 @@ export const executeQuery = (req, res, queryType) => {
                                     })
                             }
                         })
+                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
