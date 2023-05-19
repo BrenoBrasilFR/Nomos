@@ -5,7 +5,7 @@ import { query } from 'express';
 import crypto from 'crypto';
 
 const generateToken = (id, type) => {
-    return jwt.sign({ id }, process.env.SECRET, { expiresIn: type === 'access' ? '1m' : '3m' })
+    return jwt.sign({ id }, process.env.SECRET, { expiresIn: type === 'access' ? '1m' : '1m' })
 }
 
 export const executeQuery = (req, res, queryType) => {
@@ -162,39 +162,8 @@ export const executeQuery = (req, res, queryType) => {
             jwt.verify(req.cookies.token, process.env.SECRET, (err, decoded) => {
                 if (err) {
                     if (err.name === 'TokenExpiredError') {
-                        connection.query('SELECT id, first_name, last_name, email, is_admin, token FROM users WHERE token = ?',
-                            [req.cookies.token],
-                            (error, results, fields) => {
-                                if (error) {
-                                    res.send(error)
-                                } else {
-                                    jwt.verify(results[0].token, process.env.SECRET, (err, decodedDB) => {
-                                        if (err) {
-                                            connection.query('UPDATE users SET token = NULL WHERE token = ?', [results[0].token], (err, results, fields) => {
-                                                if (err) {
-                                                    res.status(500).send()
-                                                } else {
-                                                    res.clearCookie('token')
-                                                    res.status(200).send()
-                                                }
-                                            })
-                                            connection.end();
-                                        } else if (decodedDB) {
-                                            if (results[0].token === req.cookies.token) {
-                                                res.clearCookie('token')
-                                                serverUserInfo(
-                                                    results[0].id,
-                                                    results[0].first_name,
-                                                    results[0].last_name,
-                                                    results[0].email,
-                                                    results[0].is_admin
-                                                )
-                                            }
-                                        }
-                                    })
-                                }
-                            }
-                        )
+                        res.clearCookie('token')
+                        res.json({})
                     } else {
                         req.sendStatus(500)
                     }
@@ -232,7 +201,7 @@ export const executeQuery = (req, res, queryType) => {
                         res.status(200).send()
                     }
                 })
-
+                connection.end();
             })
         } else { res.json({}) }
     } else if (queryType === 'Update User') {
@@ -243,7 +212,7 @@ export const executeQuery = (req, res, queryType) => {
                         res.clearCookie('token')
                         res.json({})
                     } else {
-                        req.sendStatus(500)
+                        res.sendStatus(500)
                     }
                 } else if (req.body.email) {
                     connection.query('UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE id = ?',
