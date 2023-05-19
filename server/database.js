@@ -66,7 +66,7 @@ export const executeQuery = (req, res, queryType) => {
                 res.json(results);
             }
         })
-        connection.end();
+        connection.end()
     } else if (queryType === 'Select Product by Id') {
         connection.query('SELECT * FROM products WHERE id = ?', req.params.id, (error, results, fields) => {
             if (error) {
