@@ -56,7 +56,6 @@ export const executeQuery = (req, res, queryType) => {
                 }
             }
         )
-        connection.end();
     }
 
     if (queryType === 'Select All Products') {
