@@ -5,7 +5,7 @@ import { query } from 'express';
 import crypto from 'crypto';
 
 const generateToken = (id, type) => {
-    return jwt.sign({ id }, process.env.SECRET, { expiresIn: type === 'access' ? '2m' : '5m' })
+    return jwt.sign({ id }, process.env.SECRET, { expiresIn: type === 'access' ? '1m' : '3m' })
 }
 
 export const executeQuery = (req, res, queryType) => {
@@ -25,11 +25,7 @@ export const executeQuery = (req, res, queryType) => {
                 if (error) res.send(error)
             }
         )
-        /* connection.query('CREATE EVENT ? ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 DAY DO BEGIN UPDATE users SET token = NULL WHERE id = ?; END;',
-            [refreshToken, id], (error, results, fields) => {
-                if (error) res.status(500).send('Error creating delete token event')
-            }
-        ) */
+
         connection.query('SELECT * FROM addresses WHERE user_id = ?',
             [id], (error, resultsAddresses, fields) => {
                 if (error) {
@@ -181,15 +177,9 @@ export const executeQuery = (req, res, queryType) => {
                                                     res.status(200).send()
                                                 }
                                             })
-
+                                            connection.end();
                                         } else if (decodedDB) {
                                             if (results[0].token === req.cookies.token) {
-                                                /* connection.query('DROP EVENT ?',
-                                                    [results[0].token], (error, results, fields) => {
-                                                        if (error) res.status(500).send('Error deleting token event on database')
-                                                    }
-                                                ) */
-
                                                 res.clearCookie('token')
                                                 serverUserInfo(
                                                     results[0].id,
