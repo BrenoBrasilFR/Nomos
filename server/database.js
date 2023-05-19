@@ -448,5 +448,4 @@ export const executeQuery = (req, res, queryType) => {
             })
         } else { res.status(401).json({}) }
     }
-    connection.release();
 }
