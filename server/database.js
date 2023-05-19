@@ -25,7 +25,6 @@ export const executeQuery = (req, res, queryType) => {
                 if (error) res.send(error)
             }
         )
-        connection.end();
         /* connection.query('CREATE EVENT ? ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 DAY DO BEGIN UPDATE users SET token = NULL WHERE id = ?; END;',
             [refreshToken, id], (error, results, fields) => {
                 if (error) res.status(500).send('Error creating delete token event')
@@ -57,6 +56,8 @@ export const executeQuery = (req, res, queryType) => {
                 }
             }
         )
+        connection.end();
+        connection.end();
         connection.end();
         connection.end();
     }
