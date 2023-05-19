@@ -53,7 +53,7 @@ export const executeQuery = (req, res, queryType) => {
                             }
                         }
                     )
-                    connection.end()
+                    connection.end();
                 }
             }
         )
@@ -165,7 +165,7 @@ export const executeQuery = (req, res, queryType) => {
             jwt.verify(req.cookies.token, process.env.SECRET, (err, decoded) => {
                 if (err) {
                     if (err.name === 'TokenExpiredError') {
-                        connection.query('SELECT id, first_name, last_name, email, is_admin, token FROM users WHERE id = ?',
+                        connection.query('SELECT id, first_name, last_name, email, is_admin, token FROM users WHERE token = ?',
                             [req.cookies.token],
                             (error, results, fields) => {
                                 if (error) {
@@ -184,11 +184,11 @@ export const executeQuery = (req, res, queryType) => {
 
                                         } else if (decoded) {
                                             if (results[0].token === req.cookies.token) {
-                                                connection.query('DROP EVENT ?',
+                                                /* connection.query('DROP EVENT ?',
                                                     [results[0].token], (error, results, fields) => {
                                                         if (error) res.status(500).send('Error deleting token event on database')
                                                     }
-                                                )
+                                                ) */
 
                                                 res.clearCookie('token')
                                                 serverUserInfo(
