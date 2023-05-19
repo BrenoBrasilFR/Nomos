@@ -44,7 +44,7 @@ const Register = () => {
             headers: { 'Content-Type': 'application/json' },
             body: form
         }).then(res => res.json().then(response => {
-            if (res.status === 409) { setres(400); return }
+            if (res.status === 409) { setres(409); return }
             else if (res.status === 500) { setres(500); return }
             dispatch(setUserInfo({
                 fname: response.fname,
