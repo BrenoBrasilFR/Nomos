@@ -156,7 +156,6 @@ export const executeQuery = (req, res, queryType) => {
                         }
                     }
                 )
-                connection.end();
             }
         })
 
@@ -241,7 +240,7 @@ export const executeQuery = (req, res, queryType) => {
                         res.status(200).send()
                     }
                 })
-                connection.end();
+
             })
         } else { res.json({}) }
     } else if (queryType === 'Update User') {
@@ -260,7 +259,7 @@ export const executeQuery = (req, res, queryType) => {
                             if (err) res.sendStatus(500)
                             if (results) res.sendStatus(200)
                         })
-                    connection.end();
+
                 } else if (req.body.password) {
                     bcrypt.hash(req.body.password, 10, (err, hash) => {
                         if (err) {
@@ -272,7 +271,7 @@ export const executeQuery = (req, res, queryType) => {
                                     if (results) res.sendStatus(200)
                                 }
                             )
-                            connection.end();
+
                         }
                     })
 
@@ -310,7 +309,7 @@ export const executeQuery = (req, res, queryType) => {
                             }
                         }
                     )
-                    connection.end();
+
                 }
             })
         } else { res.status(401).json({}) }
@@ -330,7 +329,7 @@ export const executeQuery = (req, res, queryType) => {
                             if (err) res.sendStatus(500)
                             if (results) res.sendStatus(200)
                         })
-                    connection.end();
+
                 }
             })
         } else { res.status(401).json({}) }
@@ -359,7 +358,7 @@ export const executeQuery = (req, res, queryType) => {
                                 })
                             }
                         })
-                    connection.end();
+
                 }
             })
         } else { res.status(401).json({}) }
@@ -391,7 +390,7 @@ export const executeQuery = (req, res, queryType) => {
                                 )
                             }
                         })
-                    connection.end();
+
                 }
             })
         } else { res.status(401).json({}) }
@@ -415,7 +414,7 @@ export const executeQuery = (req, res, queryType) => {
                                 req.sendStatus(201)
                             }
                         })
-                    connection.end();
+
                 }
             })
         } else { res.status(401).json({}) }
@@ -458,7 +457,7 @@ export const executeQuery = (req, res, queryType) => {
                                     })
                             }
                         })
-                    connection.end();
+
                 }
             })
         } else { res.status(401).json({}) }
