@@ -171,9 +171,9 @@ export const executeQuery = (req, res, queryType) => {
                                 if (error) {
                                     res.send(error)
                                 } else {
-                                    jwt.verify(results[0].token, process.env.SECRET, (err, decoded) => {
+                                    jwt.verify(results[0].token, process.env.SECRET, (err, decodedDB) => {
                                         if (err) {
-                                            connection.query('UPDATE users SET token = NULL WHERE id = ?', [decoded.id], (err, results, fields) => {
+                                            connection.query('UPDATE users SET token = NULL WHERE token = ?', [results[0].token], (err, results, fields) => {
                                                 if (err) {
                                                     res.status(500).send()
                                                 } else {
@@ -182,7 +182,7 @@ export const executeQuery = (req, res, queryType) => {
                                                 }
                                             })
 
-                                        } else if (decoded) {
+                                        } else if (decodedDB) {
                                             if (results[0].token === req.cookies.token) {
                                                 /* connection.query('DROP EVENT ?',
                                                     [results[0].token], (error, results, fields) => {
