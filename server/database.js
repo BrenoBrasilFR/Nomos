@@ -22,7 +22,7 @@ export const executeQuery = (req, res, queryType) => {
 
         connection.query('UPDATE users SET token = ? WHERE id = ?',
             [refreshToken, id], (error, results, fields) => {
-                if (error) res.status(500).send('Error setting token on database')
+                if (error) res.send(error)
             }
         )
         connection.end();
