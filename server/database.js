@@ -181,7 +181,7 @@ export const executeQuery = (req, res, queryType) => {
                                                     res.status(200).send()
                                                 }
                                             })
-                                            connection.end();
+
                                         } else if (decoded) {
                                             if (results[0].token === req.cookies.token) {
                                                 connection.query('DROP EVENT ?',
@@ -189,7 +189,7 @@ export const executeQuery = (req, res, queryType) => {
                                                         if (error) res.status(500).send('Error deleting token event on database')
                                                     }
                                                 )
-                                                connection.end();
+
                                                 res.clearCookie('token')
                                                 serverUserInfo(
                                                     results[0].id,
@@ -204,7 +204,6 @@ export const executeQuery = (req, res, queryType) => {
                                 }
                             }
                         )
-                        connection.end();
                     } else {
                         req.sendStatus(500)
                     }
@@ -227,7 +226,6 @@ export const executeQuery = (req, res, queryType) => {
                             }
                         }
                     )
-                    connection.end();
                 }
             })
         } else { res.json({}) }
