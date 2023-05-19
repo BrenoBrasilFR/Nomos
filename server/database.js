@@ -134,6 +134,7 @@ export const executeQuery = (req, res, queryType) => {
                             } else {
                                 res.status(500).json({})
                             }
+                            connection.end();
                         } else {
                             connection.query('SELECT id, first_name, last_name, email, is_admin FROM users WHERE id = ?', [userId],
                                 (error, results1, fields) => {
