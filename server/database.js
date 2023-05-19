@@ -193,15 +193,20 @@ export const executeQuery = (req, res, queryType) => {
     } else if (queryType === 'Logout') {
         if (req.cookies.token) {
             jwt.verify(req.cookies.token, process.env.SECRET, (err, decoded) => {
-                connection.query('UPDATE users SET token = NULL WHERE id = ?', [decoded.id], (err, results, fields) => {
-                    if (err) {
-                        res.status(500).send()
-                    } else {
-                        res.clearCookie('token')
-                        res.status(200).send()
-                    }
-                })
-                connection.end();
+                if (err) {
+                    res.clearCookie('token')
+                    res.status(200).send()
+                } else if (decoded) {
+                    connection.query('UPDATE users SET token = NULL WHERE id = ?', [decoded.id], (err, results, fields) => {
+                        if (err) {
+                            res.status(500).send()
+                        } else {
+                            res.clearCookie('token')
+                            res.status(200).send()
+                        }
+                    })
+                    connection.end();
+                }
             })
         } else { res.json({}) }
     } else if (queryType === 'Update User') {
