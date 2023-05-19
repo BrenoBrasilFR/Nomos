@@ -58,6 +58,7 @@ export const executeQuery = (req, res, queryType) => {
             }
         )
         connection.end();
+        connection.end();
     }
 
     if (queryType === 'Select All Products') {
@@ -125,7 +126,6 @@ export const executeQuery = (req, res, queryType) => {
                 }
             }
         )
-        connection.end();
     } else if (queryType === 'Register') {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
             if (err) {
