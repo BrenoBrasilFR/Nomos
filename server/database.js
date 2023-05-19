@@ -5,16 +5,7 @@ import { query } from 'express';
 import crypto from 'crypto';
 
 const generateToken = (id, type) => {
-    const token = jwt.sign({ id }, process.env.SECRET, { expiresIn: type === 'access' ? '2m' : '5m' })
-    if (type === 'refresh') {
-        connection.query('UPDATE users SET token = ? WHERE id = ?',
-            [refreshToken, id], (error, results, fields) => {
-                if (error) res.status(500).send('Error setting token on database')
-            }
-        )
-        connection.end();
-    }
-    return token;
+    return jwt.sign({ id }, process.env.SECRET, { expiresIn: type === 'access' ? '2m' : '5m' })
 }
 
 export const executeQuery = (req, res, queryType) => {
@@ -29,12 +20,12 @@ export const executeQuery = (req, res, queryType) => {
         let accessToken = generateToken(id, 'access');
         let refreshToken = generateToken(id, 'refresh');
 
-        /* connection.query('UPDATE users SET token = ? WHERE id = ?',
+        connection.query('UPDATE users SET token = ? WHERE id = ?',
             [refreshToken, id], (error, results, fields) => {
                 if (error) res.status(500).send('Error setting token on database')
             }
         )
-        connection.end(); */
+        connection.end();
         /* connection.query('CREATE EVENT ? ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 DAY DO BEGIN UPDATE users SET token = NULL WHERE id = ?; END;',
             [refreshToken, id], (error, results, fields) => {
                 if (error) res.status(500).send('Error creating delete token event')
