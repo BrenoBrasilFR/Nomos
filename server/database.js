@@ -278,7 +278,7 @@ export const executeQuery = (req, res, queryType) => {
                             }
                         }
                     )
-
+                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
@@ -298,7 +298,7 @@ export const executeQuery = (req, res, queryType) => {
                             if (err) res.sendStatus(500)
                             if (results) res.sendStatus(200)
                         })
-
+                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
