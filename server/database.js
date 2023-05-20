@@ -266,7 +266,7 @@ export const executeQuery = (req, res, queryType) => {
                                 res.sendStatus(500)
                                 console.log(err)
                             } else {
-                                connection.query('SELECT * FROM addresses WHERE id = ? ',
+                                connection.query('SELECT * FROM addresses WHERE id = ?',
                                     [addressId], (err, results, fields) => {
                                         if (err) {
                                             res.status(500).send('error selecting address')
