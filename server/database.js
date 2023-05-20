@@ -365,31 +365,6 @@ export const executeQuery = (req, res, queryType) => {
                 }
             })
         } else { res.status(401).json({}) }
-    } else if (queryType === 'Delete Review') {
-        if (req.cookies.token) {
-            jwt.verify(req.cookies.token, process.env.SECRET, (err, decoded) => {
-                if (err) {
-                    if (err.name === 'TokenExpiredError') {
-                        res.clearCookie('token')
-                        res.json({})
-                    } else {
-                        req.sendStatus(500)
-                    }
-                } else {
-                    let reviewId = crypto.randomBytes(16).toString('hex')
-                    connection.query('INSERT INTO reviews() VALUES()',
-                        [reviewId, decoded.id],
-                        (err, results, fields) => {
-                            if (err) res.status(500).send(err)
-                            if (results) {
-                                req.sendStatus(201)
-                            }
-                        }
-                    )
-                    connection.end();
-                }
-            })
-        } else { res.status(401).json({}) }
     } else if (queryType === 'Delete Account') {
         if (req.cookies.token) {
             jwt.verify(req.cookies.token, process.env.SECRET, (err, decoded) => {

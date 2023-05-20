@@ -1,5 +1,4 @@
-import express, { application } from 'express';
-import bcrypt from 'bcryptjs';
+import express from 'express';
 import { executeQuery } from './database.js';
 const router = express.Router();
 
@@ -31,12 +30,12 @@ router.post('/create_order', (req, res) => {
     executeQuery(req, res, 'Create Order')
 })
 
-router.get('/delete_account', (req, res) => {
-    executeQuery(req, res, 'Delete Account')
-})
-
 router.post('/create_review', (req, res) => {
     executeQuery(req, res, 'Create Review')
+})
+
+router.get('/delete_account', (req, res) => {
+    executeQuery(req, res, 'Delete Account')
 })
 
 export default router; 
