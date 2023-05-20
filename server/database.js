@@ -269,12 +269,13 @@ export const executeQuery = (req, res, queryType) => {
                                 connection.query('SELECT * FROM addresses WHERE id = ?',
                                     [addressId], (err, results, fields) => {
                                         if (err) {
-                                            res.status(500).send('error selecting address')
+                                            res.send(err)
                                         } else {
                                             res.status(200).json(results)
                                         }
                                     }
                                 )
+
                             }
                         }
                     )
