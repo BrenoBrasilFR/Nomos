@@ -275,11 +275,10 @@ export const executeQuery = (req, res, queryType) => {
                                         }
                                     }
                                 )
-
+                                connection.end();
                             }
                         }
                     )
-                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
