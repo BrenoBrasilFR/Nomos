@@ -215,7 +215,7 @@ export const executeQuery = (req, res, queryType) => {
                 if (err) {
                     if (err.name === 'TokenExpiredError') {
                         res.clearCookie('token')
-                        res.json({})
+                        res.status(401).json({})
                     } else {
                         res.sendStatus(500)
                     }
@@ -225,8 +225,9 @@ export const executeQuery = (req, res, queryType) => {
                             [req.body.fname, req.body.lname, req.body.email, decoded.id], (err, results, fields) => {
                                 if (err) res.sendStatus(500)
                                 if (results) res.sendStatus(200)
-                            })
-
+                            }
+                        )
+                        connection.end();
                     } else if (req.body.password) {
                         bcrypt.hash(req.body.password, 10, (err, hash) => {
                             if (err) {
@@ -238,7 +239,7 @@ export const executeQuery = (req, res, queryType) => {
                                         if (results) res.sendStatus(200)
                                     }
                                 )
-
+                                connection.end();
                             }
                         })
 
