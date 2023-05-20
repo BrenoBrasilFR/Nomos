@@ -5,7 +5,7 @@ import { query } from 'express';
 import crypto from 'crypto';
 
 const generateToken = (id, type) => {
-    return jwt.sign({ id }, process.env.SECRET, { expiresIn: type === 'access' ? '1m' : '2m' })
+    return jwt.sign({ id }, process.env.SECRET, { expiresIn: type === 'access' ? '15m' : '1d' })
 }
 
 export const executeQuery = (req, res, queryType) => {
