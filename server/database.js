@@ -326,8 +326,9 @@ export const executeQuery = (req, res, queryType) => {
                                     }
                                 })
                             }
-                        })
-
+                        }
+                    )
+                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
@@ -358,8 +359,9 @@ export const executeQuery = (req, res, queryType) => {
                                     }
                                 )
                             }
-                        })
-
+                        }
+                    )
+                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
@@ -382,8 +384,9 @@ export const executeQuery = (req, res, queryType) => {
                             if (results) {
                                 req.sendStatus(201)
                             }
-                        })
-
+                        }
+                    )
+                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
@@ -420,6 +423,7 @@ export const executeQuery = (req, res, queryType) => {
                                                                 if (err) res.status(500).send(err)
                                                                 if (results) res.sendStatus(200)
                                                             })
+                                                        connection.end();
                                                     }
                                                 })
                                         }
