@@ -219,28 +219,30 @@ export const executeQuery = (req, res, queryType) => {
                     } else {
                         res.sendStatus(500)
                     }
-                } else if (req.body.email) {
-                    connection.query('UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE id = ?',
-                        [req.body.fname, req.body.lname, req.body.email, decoded.id], (err, results, fields) => {
-                            if (err) res.sendStatus(500)
-                            if (results) res.sendStatus(200)
+                } else if (decoded) {
+                    if (req.body.email) {
+                        connection.query('UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE id = ?',
+                            [req.body.fname, req.body.lname, req.body.email, decoded.id], (err, results, fields) => {
+                                if (err) res.sendStatus(500)
+                                if (results) res.sendStatus(200)
+                            })
+
+                    } else if (req.body.password) {
+                        bcrypt.hash(req.body.password, 10, (err, hash) => {
+                            if (err) {
+                                send(err)
+                            } else {
+                                connection.query('UPDATE users SET password = ? WHERE id = ?',
+                                    [hash, decoded.id], (err, results, fields) => {
+                                        if (err) res.sendStatus(500)
+                                        if (results) res.sendStatus(200)
+                                    }
+                                )
+
+                            }
                         })
 
-                } else if (req.body.password) {
-                    bcrypt.hash(req.body.password, 10, (err, hash) => {
-                        if (err) {
-                            send(err)
-                        } else {
-                            connection.query('UPDATE users SET password = ? WHERE id = ?',
-                                [hash, decoded.id], (err, results, fields) => {
-                                    if (err) res.sendStatus(500)
-                                    if (results) res.sendStatus(200)
-                                }
-                            )
-
-                        }
-                    })
-
+                    }
                 }
 
             })
