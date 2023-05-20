@@ -5,7 +5,7 @@ import { query } from 'express';
 import crypto from 'crypto';
 
 const generateToken = (id, type) => {
-    return jwt.sign({ id }, process.env.SECRET, { expiresIn: type === 'access' ? '1m' : '1m' })
+    return jwt.sign({ id }, process.env.SECRET, { expiresIn: type === 'access' ? '1m' : '2m' })
 }
 
 export const executeQuery = (req, res, queryType) => {
@@ -269,7 +269,7 @@ export const executeQuery = (req, res, queryType) => {
                                 connection.query('SELECT * FROM addresses WHERE id = ? ',
                                     [addressId], (err, results, fields) => {
                                         if (err) {
-                                            res.sendStatus(500)
+                                            res.status(500).send('error selecting address')
                                         } else {
                                             res.status(200).json(results)
                                         }
