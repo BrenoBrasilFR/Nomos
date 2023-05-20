@@ -325,10 +325,10 @@ export const executeQuery = (req, res, queryType) => {
                                         res.status(201).json(results)
                                     }
                                 })
+                                connection.end();
                             }
                         }
                     )
-                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
@@ -358,10 +358,10 @@ export const executeQuery = (req, res, queryType) => {
                                         }
                                     }
                                 )
+                                connection.end();
                             }
                         }
                     )
-                    connection.end();
                 }
             })
         } else { res.status(401).json({}) }
