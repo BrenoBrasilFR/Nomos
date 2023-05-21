@@ -33,8 +33,10 @@ function DeleteAccountAlert() {
         <div className="alert-div">
             <div className="alert-box alert-box-delete">
                 <h2>Are you sure you want to delete your account?</h2>
-                <button onClick={deleteAccount}>Yes</button>
-                <button onClick={alertDisplayNone}>No</button>
+                <div>
+                    <button onClick={deleteAccount}>Yes</button>
+                    <button onClick={alertDisplayNone}>No</button>
+                </div>
             </div>
         </div>
     )
