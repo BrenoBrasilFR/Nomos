@@ -10,10 +10,12 @@ const ProductsSlice = createSlice({
             action.payload.forEach(product => state.push(product))
         },
         productRating: (state, action) => {
-            const product = state.find(product => product.id === action.payload.id)
-            if (product.rating === null) { product.rating = [0, 0] }
-            product.rating[0] += action.payload.rating
-            product.rating[1] += 1
+            action.payload.forEach(review => {
+                let product = state.find(product => product.id === review.product_id)
+                if (product.rating === null) { product.rating = [0, 0] }
+                product.rating[0] += review.rating
+                product.rating[1] += 1
+            })
         }
     },
 })

@@ -37,7 +37,7 @@
 
 .our-watches img {
     display: block;
-    height: 230px;
+    height: 220px;
     transition: 0.3s;
     transform: scale(1);
 }
@@ -81,4 +81,37 @@
 
 .our-watches-div {
     padding: 25px;
+}
+
+@media (max-width: 915px) {
+    #products {
+        flex-direction: column;
+    }
+
+    #our-watches img {
+        height: 12px;
+        margin-top: 20px;
+    }
+
+    #our-watches h3 {
+        font-size: 1.7rem;
+        font-weight: 300;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    .our-watches-div {
+        padding: 10px;
+    }
+
+    .our-watches-div h4 {
+        font-size: 1.4rem;
+    }
+
+    #products h4 {
+        width: fit-content;
+        margin: 13px auto 10px;
+        font-size: 1.45rem;
+    }
+
 }

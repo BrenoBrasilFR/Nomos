@@ -56,3 +56,31 @@
     position: absolute;
     top: 130px;
 }
+
+@media (max-width: 915px) {
+    #showcase-background {
+        background: url(../../public/images/showcase.jpg) no-repeat center 0px / cover;
+        height: 100vh;
+        width: 100%;
+        opacity: 0.5;
+        position: relative;
+        background-attachment: fixed;
+    }
+
+    #showcase-main-text img {
+        height: 100px;
+    }
+
+    #showcase-main-text {
+        top: 110px;
+    }
+
+    #showcase-main-text h3 {
+        font-size: 1.5rem;
+        margin: 20px 30px;
+    }
+
+    #showcase-main-text h4 {
+        display: none;
+    }
+}

@@ -15,11 +15,11 @@ function Home() {
             document.head.removeChild(scriptShop1);
         };
 
-        var scriptHome2 = document.createElement("script");
-        scriptHome2.id = 'scriptHome2';
-        scriptHome2.src = "javascript/slideRelease.js";
-        scriptHome2.defer = true;
-        document.head.appendChild(scriptHome2);
+        var scriptHome = document.createElement("script");
+        scriptHome.id = 'scriptHome';
+        scriptHome.src = "javascript/slideRelease.js";
+        scriptHome.defer = true;
+        document.head.appendChild(scriptHome);
     });
 
     return (

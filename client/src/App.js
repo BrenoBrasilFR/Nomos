@@ -77,9 +77,7 @@ function App() {
       .then((res) => res.json())
       .then((res) => {
         dispatch(setReviews(res))
-        res.forEach(review => {
-          dispatch(productRating({ rating: review.rating, id: review.product_id }))
-        })
+        dispatch(productRating(res))
       })
   }, [dispatch])
 

@@ -263,3 +263,15 @@ nav h3 {
     font-weight: 300;
     color: black;
 }
+
+@media (max-width: 915px) {
+    #brand img {
+        height: 70px;
+        margin-right: 0px;
+    }
+
+    li a {
+        font-size: 1.2rem;
+    }
+
+}

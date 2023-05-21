@@ -18,7 +18,7 @@ function appendDots(num) {
         };
 
         for (let i = 0; i < items.length / num; i++) {
-                    
+
             const dotButton = document.createElement('button');
             const dotDiv = document.createElement('div');
             dotButton.classList.add('button-dot');
@@ -35,12 +35,12 @@ function appendDots(num) {
 function functionalityDots(page) {
     const dots = document.querySelectorAll('.button-dot');
     page -= 1;
-    
+
     if (dots.length !== 0) {
         dots.forEach(dot => {
             dot.firstChild.classList.remove('current-dot');
         });
-        
+
         dots[page].firstChild.classList.add('current-dot');
 
         dots.forEach(dot => {
@@ -48,53 +48,53 @@ function functionalityDots(page) {
                 let dotsArray = Array.from(dots);
                 page = dotsArray.indexOf(dot) + 1;
                 selected = document.querySelectorAll('.is-selected');
-    
+
                 selected.forEach(item => {
-                item.style.animation='fadeOut 0.2s';
+                    item.style.animation = 'fadeOut 0.2s';
                 });
-                
+
                 dots.forEach(dot => {
                     dot.firstChild.classList.remove('current-dot');
                 });
-                
+
                 dots[page - 1].firstChild.classList.add('current-dot');
-    
-                setTimeout(function() {
-    
+
+                setTimeout(function () {
+
                     selected.forEach(element => {
                         element.classList.remove('is-selected');
-                        element.style.animation='';
+                        element.style.animation = '';
                     });
-    
+
                     for (let i = (page - 1) * itemDisplayNumbers; i < page * itemDisplayNumbers & i < items.length; i++) {
                         items[i].classList.add('is-selected');
                     };
-            
+
                     if (page * itemDisplayNumbers >= items.length) { page = 0 };
-    
+
                     setCount(page);
-                    
+
                 }, 100);
             });
         });
-    };  
+    };
 };
 
 function toggleSelectedClass() {
     loaderProducts.style.display = 'none';
-    
-    if (items.length !== 0) {
-        for(let i = 0; i < items.length; i++) {
-            items[i].classList.remove('is-selected');
-        }; 
 
-        for(let i = 0; i < itemDisplayNumbers; i++) {
+    if (items.length !== 0) {
+        for (let i = 0; i < items.length; i++) {
+            items[i].classList.remove('is-selected');
+        };
+
+        for (let i = 0; i < itemDisplayNumbers; i++) {
             items[i].classList.add('is-selected');
             page = 1;
-        }; 
+        };
     };
 };
-    
+
 
 function mediaQuery() {
     var carousel = document.querySelector('.carousel');
@@ -129,56 +129,59 @@ window.addEventListener("resize", mediaQuery);
 mediaQuery();
 
 buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        selected = document.querySelectorAll('.is-selected');
+    if (!button.hasAttribute("listener")) {
+        button.setAttribute("listener", true)
+        button.addEventListener('click', () => {
+            selected = document.querySelectorAll('.is-selected');
 
-        selected.forEach(item => {
-            item.style.animation='fadeOut 0.2s';
+            selected.forEach(item => {
+                item.style.animation = 'fadeOut 0.2s';
+            });
+
+            if (button.classList.contains('next')) {
+                page += 1;
+                if (end === true) { page = 1; end = false; };
+
+                setTimeout(function () {
+                    selected.forEach(element => {
+                        element.classList.remove('is-selected');
+                        element.style.animation = '';
+                    });
+
+                    for (let i = (page - 1) * itemDisplayNumbers; i < page * itemDisplayNumbers & i < items.length; i++) {
+                        items[i].classList.add('is-selected');
+                    };
+
+                    if (page === Math.ceil(items.length / itemDisplayNumbers)) { end = true };
+                    functionalityDots(page);
+
+                }, 100);
+            };
+
+            if (button.classList.contains('prev')) {
+                if (page >= 1) { page -= 1 };
+                if (page <= 0) { page = Math.ceil(items.length / itemDisplayNumbers) };
+                if (page !== Math.ceil(items.length / itemDisplayNumbers)) { end = false };
+
+                setTimeout(function () {
+                    functionalityDots(page);
+
+                    selected.forEach(element => {
+                        element.classList.remove('is-selected');
+                        element.style.animation = '';
+                    });
+
+                    for (let i = (page - 1) * itemDisplayNumbers; i < page * itemDisplayNumbers & i < items.length; i++) {
+                        items[i].classList.add('is-selected');
+                    };
+
+                    if (page === Math.ceil(items.length / itemDisplayNumbers)) { end = true };
+
+                }, 100);
+            };
+
+            button.disabled = true;
+            setTimeout(() => { button.disabled = false }, 100);
         });
-        
-        if(button.classList.contains('next')) {
-            page += 1;
-            if (end === true) { page = 1; end = false; };
-
-            setTimeout(function() {
-                selected.forEach(element => {
-                    element.classList.remove('is-selected');
-                    element.style.animation='';
-                });
-
-                for (let i = (page - 1) * itemDisplayNumbers; i < page * itemDisplayNumbers & i < items.length; i++) {
-                    items[i].classList.add('is-selected');
-                };
-
-                if (page === Math.ceil(items.length / itemDisplayNumbers)) { end = true };
-                functionalityDots(page);
-             
-            }, 100);
-        };
-
-        if(button.classList.contains('prev')) {
-            if (page >= 1) { page -= 1 };
-            if (page <= 0) { page = Math.ceil(items.length / itemDisplayNumbers) };
-            if (page !== Math.ceil(items.length / itemDisplayNumbers)) { end = false };
-
-            setTimeout(function() {
-                functionalityDots(page);
-
-                selected.forEach(element => {
-                    element.classList.remove('is-selected');
-                    element.style.animation='';
-                });
-
-                for(let i = (page - 1) * itemDisplayNumbers; i < page * itemDisplayNumbers & i < items.length; i++) {
-                    items[i].classList.add('is-selected');
-                };
-
-                if (page === Math.ceil(items.length / itemDisplayNumbers)) { end = true };
-
-            }, 100);
-        };
-
-        button.disabled = true;
-        setTimeout(() => {button.disabled = false}, 100);
-    });
+    }
 });
