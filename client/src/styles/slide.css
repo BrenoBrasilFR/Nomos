@@ -180,7 +180,7 @@
 @media (max-width: 915px) {
     #new-release {
         width: 100vw;
-        height: 55vh;
+        height: 50vh;
     }
 
     .release-item img {
@@ -199,12 +199,12 @@
     }
 
     .new-release-text {
-        left: 35px;
+        left: 45px;
         top: 20px;
     }
 
     .new-release-text h3 {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         cursor: pointer;
         margin: 0;
         margin-right: 0px;
