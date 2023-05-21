@@ -94,7 +94,7 @@
     }
 
     #our-watches h3 {
-        font-size: 1.7rem;
+        font-size: 1.8rem;
         font-weight: 300;
         margin-top: 20px;
         cursor: pointer;
@@ -105,13 +105,13 @@
     }
 
     .our-watches-div h4 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 
     #products h4 {
         width: fit-content;
         margin: 13px auto 10px;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 
 }
