@@ -29,7 +29,7 @@ function Carousel() {
     }
 
     return (
-        <div id="collection-div" data-aos='fade-left'>
+        <div id="collection-div" data-aos={window.screen.width >= '915' ? 'fade-left' : 'fade-in'}>
             <Link to='/shop' id="our-watches"><h3>Our collection</h3><img src="images/seta.png" alt=""></img></Link>
             <div className="carousel">
                 <button className="carousel-button prev"><img src="images/Arrows/arrow1/arrow1.png" alt=""></img></button>

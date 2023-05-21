@@ -1,5 +1,5 @@
 #header {
-    width: 100%;
+    width: 100vw;
     height: 90px;
     background: transparent;
     box-shadow: none;
@@ -272,6 +272,10 @@ nav h3 {
 
     li a {
         font-size: 1.2rem;
+    }
+
+    #footer {
+        height: 70px;
     }
 
 }
