@@ -5,7 +5,8 @@
     border-radius: 3px;
     position: fixed;
     top: 40px;
-    left: 43.5%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 5;
     padding: 15px 25px;
     opacity: 0;
@@ -14,4 +15,16 @@
 
 .notif-div h3 {
     margin: 0;
+}
+
+@media (max-height: 915px) {
+    .notif-div {
+        position: fixed;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        z-index: 5;
+        padding: 15px 25px;
+    }
 }

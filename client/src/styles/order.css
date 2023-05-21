@@ -223,3 +223,88 @@
 .not_fullfilled {
     background-color: #FFE4E4;
 }
+
+@media (max-width: 915px) {
+    #shippingMain {
+        width: fit-content;
+        padding: 30px;
+    }
+
+    #shipping {
+        width: fit-content;
+    }
+
+    #shipping form {
+        width: fit-content;
+    }
+
+    #shipping>form>div>input,
+    #shipping>form>div>select {
+        width: 100%;
+    }
+
+    #payment {
+        padding: 30px;
+    }
+
+    #orderMain {
+        padding: 15px;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #orderMain h4 {
+        font-size: 1.25rem;
+    }
+
+    #orderMainLeft {
+        margin-right: 0;
+    }
+
+    #orderMainLeft h2 {
+        font-size: 1.4rem;
+    }
+
+    #orderMainLeft h3 {
+        margin: 0 !important;
+    }
+
+    #orderMainLeft h4 {
+        margin: 0;
+    }
+
+    #orderMainLeft h4 :first-child {
+        margin: 0;
+    }
+
+    .order-address h4 {
+        margin: 0 !important;
+    }
+
+    .orderItems h4 {
+        width: fit-content;
+        margin: 0 5px !important;
+        font-size: 1.25rem !important;
+    }
+
+    .orderItems h4:first-child {
+        margin: 0 !important;
+    }
+
+    #orderMainSummary {
+        margin: 20px 0;
+    }
+
+    #orderMainSummary>h3 {
+        margin: 4px 0;
+    }
+
+    #orderMainSummary>div>h4 {
+        margin: 2px 0;
+    }
+
+    .status {
+        margin: 5px 0 !important;
+    }
+}

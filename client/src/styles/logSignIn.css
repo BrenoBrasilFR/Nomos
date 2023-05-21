@@ -72,3 +72,52 @@ fieldset>div>input {
     margin: 15px 0;
     margin-left: 8px;
 }
+
+@media (max-width: 915px) {
+    .form {
+        padding: 20px;
+    }
+
+    .form>form>fieldset>legend {
+        font-size: 1.5rem;
+        margin: 10px auto;
+    }
+
+    .form>form button {
+        cursor: pointer;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        background-color: white;
+        margin: 20px 0 0;
+        border-radius: 5px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    fieldset>div>label {
+        font-size: 1.3rem;
+        width: 110px;
+    }
+
+    fieldset>div>input {
+        font-size: 1.1rem;
+        width: 200px;
+    }
+
+    #loginRegisterDiv {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #loginRegisterDiv h3 {
+        font-size: 1.3rem;
+        margin: 0;
+        margin-left: 8px;
+    }
+
+    #loginRegisterDiv a {
+        font-size: 1.3rem;
+        margin: 0;
+        margin-left: 8px;
+    }
+}

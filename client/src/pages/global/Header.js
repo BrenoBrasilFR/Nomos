@@ -68,7 +68,7 @@ function Header(props) {
             <section id="header" className="header-scrolled header-shop" style={window.screen.width >= '915' ? {} : header}>
                 <div id="inner-header" className="inner-header-shop" style={window.screen.width >= '915' ? {} : innerHeader}>
                     <div id="brand">
-                        <Link to='/' style={window.screen.width >= '915' ? {} : { display: 'none' }} ><img src="/images/logo.png" alt="Nomos Glashutte"></img></Link>
+                        <Link to='/'><img src="/images/logo.png" alt="Nomos Glashutte"></img></Link>
                         <div id="search-bar">
                             <input
                                 type="text"

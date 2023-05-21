@@ -224,3 +224,89 @@
     margin-top: 20px;
     margin-bottom: 0;
 }
+
+@media (max-width: 915px) {
+    #PSmain {
+        margin: 0;
+        width: fit-content;
+        padding: 10px;
+    }
+
+    #PSfirstDiv {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #PSsecondDiv {
+        width: fit-content;
+    }
+
+    #PSthirdDiv {
+        margin: 0 0 0 33px !important;
+        width: max-content;
+    }
+
+    #PSbutton {
+        margin: 30px auto 10px;
+    }
+
+    #PSimage {
+        margin: 0 auto !important;
+    }
+
+    #PSreviews {
+        margin: 0 30px;
+    }
+
+    #PSreviews> :nth-child(1) {
+        margin: 0 auto;
+        width: fit-content;
+    }
+
+    #PSreviews :nth-child(2) {
+        margin: 0 auto;
+    }
+
+    #PSreviews h3,
+    #PSreviews h4 {
+        font-size: 1.3rem;
+    }
+
+    #PSreviews #addReview h3 {
+        margin: 0 5px;
+    }
+
+    .review {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .review h4 {
+        margin: 0;
+    }
+
+    .review_info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #leaveReview {
+        width: 100%;
+        padding: 15px;
+    }
+
+    #leaveReview form {
+        width: 100%;
+    }
+
+    #leaveReview form label {
+        font-size: 1.3rem;
+    }
+
+    #rating,
+    #comment {
+        min-width: 100% !important;
+        font-size: 1.3rem !important;
+    }
+}

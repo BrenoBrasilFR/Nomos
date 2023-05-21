@@ -312,3 +312,107 @@
     height: fit-content;
     cursor: pointer;
 }
+
+@media (max-height: 915px) {
+    #profile {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    #profile h3,
+    #profile legend {
+        font-size: 1.4rem;
+    }
+
+    #addAddress h4 {
+        font-size: 1.3rem;
+    }
+
+    #inner-address {
+        flex-direction: column;
+        min-width: fit-content;
+        align-items: baseline;
+    }
+
+    #inner-address div :first-child {
+        display: none;
+    }
+
+    #inner-address div :nth-child(2) {
+        font-size: 1.2rem;
+    }
+
+    #orders {
+        min-height: 250px;
+        margin: 0 0 25px;
+    }
+
+    .order {
+        flex-direction: column;
+        width: 100%;
+        margin: 15px 0;
+        width: 100%;
+        height: fit-content;
+        background: rgba(253, 253, 253, 1);
+        padding: 10px 15px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        z-index: 3;
+    }
+
+    .order h3 {
+        font-size: 1.2rem !important;
+    }
+
+    .order button {
+        cursor: pointer;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        background-color: white;
+        margin: 10px;
+        width: fit-content;
+        border-radius: 5px;
+        padding: 9px 16px;
+        font-size: 0.95rem;
+    }
+
+    .order div {
+        width: fit-content !important;
+    }
+
+    .form-profile legend {
+        margin: 7px auto !important;
+    }
+
+    .form-profile label {
+        font-size: 1.3rem;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .form-profile input {
+        font-size: 1.1rem;
+        width: 100%;
+
+    }
+
+    .form-profile form {
+        width: 100%;
+    }
+
+    .form-profile fieldset {
+        width: 100%;
+        min-inline-size: 100%;
+    }
+
+    .form-profile fieldset div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .form-profile fieldset button {
+        margin: 20px auto !important;
+    }
+}

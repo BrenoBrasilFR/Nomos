@@ -37,7 +37,7 @@ const Address = (props) => {
             </div>
 
             {props.location === 'profile'
-                ? <button onClick={deleteAdr}>Delete Address</button>
+                ? <div id="closeDropdown" onClick={deleteAdr}><div id="div1"></div><div id="div2"></div></div>
                 : null
             }
 

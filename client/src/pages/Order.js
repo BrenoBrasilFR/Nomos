@@ -61,8 +61,16 @@ const OrderSummary = () => {
                 <div id="orderMainLeft">
                     <div>
                         <h3>Shipping Details</h3>
-                        <h4>Name: {address.name}</h4>
-                        <h4>Address: {address.street}, {address.city}, {address.postalCode}, {address.country}</h4>
+                        {window.screen.width <= 915
+                            ? <h4>{address.name}</h4>
+                            : <h4>Name: {address.name}</h4>
+                        }
+
+                        {window.screen.width <= 915
+                            ? <div className="order-address"><h4>{address.street}</h4><h4>{address.city}</h4><h4>{address.postalCode}</h4><h4>{address.country}</h4></div>
+                            : <h4>Address: {address.street}, {address.city}, {address.postalCode}, {address.country}</h4>
+                        }
+
                     </div>
                     <div>
                         <h3>Payment Method</h3>
@@ -106,20 +114,6 @@ const OrderPage = () => {
     })
     let i = 0;
 
-    /*  useEffect(() => {
-         fetch('/api/config/paypal').then(res => res.text()
-         ).then(res => {
-             const script = document.createElement('script')
-             script.type = 'text/javascript'
-             script.src = `https://www.paypal.com/sdk/js?client-id=${res}`
-             script.async = true
-             script.onload = () => {
-                 setSdkReady(true)
-             }
-             document.body.appendChild(script)
-         })
-     }) */
-
     return (
         <div className="fullpage">
             <Header location='shop' />
@@ -128,9 +122,15 @@ const OrderPage = () => {
                     <h2>Order {order.id}</h2>
                     <div>
                         <h3>Shipping</h3>
-                        <h4>Name: {user.fname + ' ' + user.lname}</h4>
-                        <h4>Email: {user.email}</h4>
-                        <h4>Address: {order.street}, {order.city}, {order.postalCode}, {order.country}</h4>
+                        {window.screen.width <= 915
+                            ? <h4>{user.fname + ' ' + user.lname}</h4>
+                            : <h4>Name: {user.fname + ' ' + user.lname}</h4>
+                        }
+
+                        {window.screen.width <= 915
+                            ? <div className="order-address"><h4>{order.street}</h4><h4>{order.city}</h4><h4>{order.postalCode}</h4><h4>{order.country}</h4><h4>{user.email}</h4></div>
+                            : <h4>order: {order.street}, {order.city}, {order.postalCode}, {order.country}, {user.email}</h4>
+                        }
                         {order.status === 'Delivered'
                             ? <h4 className="status fullfilled">Status: Delivered</h4>
                             : <h4 className="status not_fullfilled">Status: Not Delivered</h4>
