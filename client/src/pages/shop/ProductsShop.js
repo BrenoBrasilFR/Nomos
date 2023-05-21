@@ -86,7 +86,7 @@ function ProductsShop({ location, param }) {
         )
     } else if (location === 'search') {
         return (
-            <section style={{ padding: '50px 40px 90px', opacity: '0', minHeight: '85vh' }} data-aos='fade' id='productsShop'>
+            <section style={window.screen.width >= '915' ? sec1 : sec2} data-aos='fade' id='productsShop'>
                 {param.get("search_query") !== null
                     ? <h2 className='search-text'>Results for {param.get("search_query")}</h2>
                     : <h2 className='search-text'>{tag}</h2>
