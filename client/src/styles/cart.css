@@ -118,6 +118,10 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        position: absolute;
+        top: 140px;
+        left: 40px;
+        min-height: 0;
         padding: 30px 0 25px !important;
     }
 

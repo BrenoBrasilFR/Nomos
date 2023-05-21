@@ -15,7 +15,7 @@ const Cart = () => {
     })
 
     return (
-        <div id='fullpage'>
+        <div className='fullpage'>
             <Header location='shop' />
             <CartMain />
             <Footer />
