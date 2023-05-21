@@ -31,6 +31,19 @@ function Header(props) {
         fetch('/api/user_session/logout').then(() => history('/shop'))
     }
 
+    const header = {
+        height: 'fit-content'
+    }
+
+    const innerHeader = {
+        flexDirection: 'column',
+        padding: '10px 0 5px'
+    }
+
+    const navbar = {
+        margin: '0 0 5px'
+    }
+
     if (props.location === 'home') {
 
         return (
@@ -52,10 +65,10 @@ function Header(props) {
     } else if (props.location === 'shop') {
 
         return (
-            <section id="header" className="header-scrolled header-shop">
-                <div id="inner-header" className="inner-header-shop">
+            <section id="header" className="header-scrolled header-shop" style={window.screen.width >= '915' ? {} : header}>
+                <div id="inner-header" className="inner-header-shop" style={window.screen.width >= '915' ? {} : innerHeader}>
                     <div id="brand">
-                        <Link to='/'><img src="/images/logo.png" alt="Nomos Glashutte"></img></Link>
+                        <Link to='/' style={window.screen.width >= '915' ? {} : { display: 'none' }} ><img src="/images/logo.png" alt="Nomos Glashutte"></img></Link>
                         <div id="search-bar">
                             <input
                                 type="text"
@@ -67,7 +80,7 @@ function Header(props) {
                         </div>
                     </div>
                     <nav id="navbar">
-                        <ul id="navbar-list">
+                        <ul id="navbar-list" style={window.screen.width >= '915' ? {} : navbar}>
                             <li id="navbar-home"><Link to='/'>Home</Link></li>
                             <li id="navbar-shop"><Link to='/shop'>Shop</Link></li>
                             <li id="navbar-cart"><Link to='/shop/cart'>

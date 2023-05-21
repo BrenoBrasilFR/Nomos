@@ -17,9 +17,13 @@ function Slide(props) {
         loaderRelease.style.display = "block"
     }, 500)
 
+    const slide = {
+        display: 'none'
+    }
+
     if (props.location === 'home') {
         return (
-            <div className='RSwrapper'>
+            <div className='RSwrapper' >
                 {/* <div className="loaderWraper"><div className="loaderRelease"></div></div> */}
                 <section id="new-release" data-aos='fade' data-aos-duration="1500" data-aos-offset="0">
                     <button className="release-button prev"><div className="release-img-div"><img src="images/Arrows/arrow2/arrow2.png" alt=""></img></div></button>
@@ -47,7 +51,7 @@ function Slide(props) {
 
     if (props.location === 'shop') {
         return (
-            <div className='RSwrapper'>
+            <div className='RSwrapper' style={window.screen.width >= '915' ? '' : slide}>
                 {/* <div className="loaderWraper"><div className="loaderRelease"></div></div> */}
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '60px', opacity: '0' }} id='releaseShop' data-aos='fade'>
                     <section id="new-release" className="releaseShop">

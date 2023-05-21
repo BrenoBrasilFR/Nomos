@@ -49,17 +49,26 @@ function ProductsShop({ location, param }) {
         if (param.get("tag") === 'orion_silver_gold') { setSelected(products.filter(p => p.id === 14 || p.id === 15)); setTag('Orion Silver and Gold') }
     }, [bestSellers, menProducts, womenProducts, unisexProducts, param, products])
 
+    const categories = {
+        flexDirection: 'column',
+        marginLeft: '0'
+    }
+
+    const sec1 = { padding: '50px 40px 90px', opacity: '0' }
+
+    const sec2 = { padding: '25px 10px 25px', opacity: '0' }
+
     if (location === 'shop') {
         return (
-            <section style={{ padding: '50px 40px 90px', opacity: '0' }} data-aos='fade' id='productsShop'>
+            <section style={window.screen.width >= '915' ? sec1 : sec2} data-aos='fade' id='productsShop'>
                 <h1 style={{ width: 'fit-content', margin: '0px auto', fontSize: '2.1rem', fontWeight: '300' }}>Our Collection</h1>
-                <div className='categories'>
-                    <h3>Select By Category:&nbsp;&nbsp;</h3>
+                <div className='categories' style={window.screen.width >= '915' ? {} : categories}>
+                    <h3 style={{ margin: '5px 5px 0 0' }}>Select By Category:&nbsp;&nbsp;</h3>
                     {menProducts.length !== 0 &&
                         womenProducts.length !== 0 &&
                         unisexProducts.length !== 0 &&
                         bestSellers.length !== 0
-                        ? <div>
+                        ? <div className='categoriesh4'>
                             <h4 onClick={() => setSelected(menProducts)}>Men's</h4>
                             <h4 onClick={() => setSelected(womenProducts)}>Women's</h4>
                             <h4 onClick={() => setSelected(unisexProducts)}>Unisex</h4>
