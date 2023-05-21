@@ -51,7 +51,7 @@ function Slide(props) {
 
     if (props.location === 'shop') {
         return (
-            <div className='RSwrapper' style={window.screen.width >= '915' ? '' : slide}>
+            <div className='RSwrapper' style={window.screen.width >= '915' ? {} : slide}>
                 {/* <div className="loaderWraper"><div className="loaderRelease"></div></div> */}
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '60px', opacity: '0' }} id='releaseShop' data-aos='fade'>
                     <section id="new-release" className="releaseShop">
