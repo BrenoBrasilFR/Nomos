@@ -44,7 +44,6 @@
 
 .form-profile input {
     width: 250px;
-    height: 30px;
     cursor: auto;
 }
 
@@ -381,7 +380,7 @@
     }
 
     .form-profile legend {
-        margin: 7px auto !important;
+        margin: 4px auto !important;
     }
 
     .form-profile label {
@@ -394,7 +393,7 @@
     .form-profile input {
         font-size: 1.1rem;
         width: 100%;
-
+        margin: 2px;
     }
 
     .form-profile form {
@@ -413,7 +412,7 @@
     }
 
     .form-profile fieldset button {
-        margin: 20px auto !important;
+        margin: 13px auto 5px !important;
     }
 
     .alert-box-delete {
@@ -423,5 +422,9 @@
 
     .alert-box-delete button {
         margin: 4px;
+    }
+
+    #delete_account {
+        margin-top: 20px;
     }
 }
