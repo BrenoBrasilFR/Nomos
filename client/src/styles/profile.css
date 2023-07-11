@@ -19,6 +19,7 @@
 
 #innerProfile {
    min-width: 55%;
+   margin-right: 40px;
 }
 
 #innerProfile h3 {
@@ -85,7 +86,7 @@
 
 .order {
    display: flex;
-   width: 94%;
+   width: 100%;
    margin: 15px 0;
 }
 
@@ -249,7 +250,7 @@
    margin: 10px 0;
    border: 1px solid rgba(0, 0, 0, 0.6);
    padding: 10px 15px;
-   width: 93%;
+   width: 100%;
    position: relative;
    border-radius: 5px;
 }
@@ -439,9 +440,6 @@
 }
 
 @media (max-width: 1600px) {
-   #innerProfile {
-      margin-right: 30px;
-   }
 
    #inner-address {
       flex-direction: column;
